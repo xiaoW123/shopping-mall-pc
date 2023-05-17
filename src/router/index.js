@@ -1,23 +1,24 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// 懒加载
+const Layout = () => import('@/views/Layout')
+const Home = () => import('@/views/home')
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: Layout,
+    children: [
+      {
+        path: '/',
+        component: Home
+      }
+    ]
   }
 ]
 
+// 创建路由
 const router = createRouter({
+  // hash路由模式
   history: createWebHashHistory(),
   routes
 })

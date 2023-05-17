@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+# 忽略引入的第三方文件，防止它不符合本次项目的eslint校验
+/src/vender
 
 # local env files
 .env.local
