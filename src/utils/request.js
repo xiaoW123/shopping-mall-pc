@@ -16,7 +16,6 @@ instance.interceptors.request.use(
     // 1.获取用户信息对象
     // const { profile } = store.state.user
     const profile = store.getters.profile
-    console.log(profile)
     if (profile.token) {
       config.headers.Authorization = `Bearer ${profile.token} `
     }
@@ -28,7 +27,7 @@ instance.interceptors.request.use(
 )
 
 // 响应拦截器
-instance.interceptors.respinse.use(
+instance.interceptors.response.use(
   (res) => {
     return res.data
   },
