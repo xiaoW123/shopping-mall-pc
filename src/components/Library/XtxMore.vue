@@ -6,12 +6,8 @@
   </RouterLink>
 </template>
 
-<script>
-export default {
-  name: 'XtxMore'
-}
-</script>
 <script setup>
+import { defineProps } from 'vue'
 const props = defineProps({
   path: {
     type: String,

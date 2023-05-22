@@ -28,13 +28,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'XtxCarousel'
-}
-</script>
 <script setup>
-import { onUnmounted, ref, watch } from 'vue'
+import { onUnmounted, ref, watch, defineProps } from 'vue'
 /* 数据 */
 const props = defineProps({
   sliders: {

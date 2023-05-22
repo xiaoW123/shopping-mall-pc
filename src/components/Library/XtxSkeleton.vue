@@ -10,13 +10,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'XtxSkeleton'
-}
-</script>
-
 <script setup>
+import { defineProps } from 'vue'
 const props = defineProps({
   bg: {
     type: String,
