@@ -4,6 +4,7 @@ const Layout = () => import('@/views/Layout')
 const Home = () => import('@/views/home')
 const TopCategory = () => import('@/views/category')
 const SubCategory = () => import('@/views/category/sub.vue')
+const Goods = () => import('@/views/goods')
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
         // 一级路由的弹窗分类的路由（二级路由）
         path: '/category/sub/:id',
         component: SubCategory
+      },
+      {
+        // 商品详情页
+        path: '/product/:id',
+        component: Goods
       }
     ]
   }
