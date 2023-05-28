@@ -14,11 +14,10 @@ export function useLazyData(target, apiFn) {
     target,
     ([{ isIntersecting }], observerElement) => {
       if (isIntersecting) {
-        console.log('进入')
+
         // 如果进入可视区，就停止观察
         stop()
         apiFn().then((res) => {
-          console.log(res)
           result.value = res.result
         })
       }

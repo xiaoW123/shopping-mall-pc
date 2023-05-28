@@ -8,11 +8,19 @@ const state = () => ({
     account: '',
     mobile: '',
     token: ''
-  }
+  },
+  // 来源页
+  redirectUrl: '/'
 })
 const mutations = {
+  SET_USER(state, data) {
+    state.profile = data
+  },
   SET_NICKNAME(state, newvalue) {
     state.profile.nickname = newvalue
+  },
+  SET_REDIRECTURL(state, url) {
+    state.redirectUrl = url
   }
 }
 const actions = {}

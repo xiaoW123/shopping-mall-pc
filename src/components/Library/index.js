@@ -29,11 +29,14 @@ export default {
     })
     // 自定义指令
     defineDirective(app)
+    // Message 组件
+    app.config.globalProperties.$message = Message
   }
 }
 
 // 定义指令
 import defaultImg from '@/assets/images/200.png'
+import Message from './Message'
 const defineDirective = (app) =>
   app.directive('lazy', {
     // binding：指令绑定的值
@@ -41,7 +44,6 @@ const defineDirective = (app) =>
       const observer = new IntersectionObserver(
         ([{ isIntersecting }]) => {
           if (isIntersecting) {
-            console.log('进入-img')
             // 停止观察
             observer.unobserve(el)
             // 处理图片加载失败,给默认图

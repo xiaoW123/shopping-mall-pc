@@ -1,14 +1,14 @@
 <!-- 单个商品模块 -->
 <template>
   <div class="goods-item">
-    <RouterLink to="/" class="image">
+    <RouterLink :to="`/product/${goods.id}`" class="image">
       <img v-lazy="goods.picture" alt="" />
     </RouterLink>
     <p class="name ellipsis-2">{{ goods.name }}</p>
     <p class="desc">{{ goods.desc }}</p>
     <p class="price">&yen;{{ goods.price }}</p>
     <div class="extra">
-      <RouterLink to="/">
+      <RouterLink :to="`/product/${goods.id}`">
         <span>找相似</span>
         <span>发现现多宝贝 &gt;</span>
       </RouterLink>
@@ -26,6 +26,7 @@ const props = defineProps({
     default: () => {}
   }
 })
+
 
 /* 函数与事件 */
 </script>

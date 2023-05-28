@@ -1,11 +1,12 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 // 懒加载
 const Layout = () => import('@/views/Layout')
 const Home = () => import('@/views/home')
 const TopCategory = () => import('@/views/category')
 const SubCategory = () => import('@/views/category/sub.vue')
 const Goods = () => import('@/views/goods')
-
+const Login = () => import('@/views/login')
+const Callback = () => import('@/views/login/callback.vue')
 const routes = [
   {
     path: '/',
@@ -32,6 +33,17 @@ const routes = [
         component: Goods
       }
     ]
+  },
+
+  {
+    // 登录页面
+    path: '/login',
+    component: Login
+  },
+  {
+    // 
+    path: '/login/callback',
+    component: Callback
   }
 ]
 
