@@ -36,6 +36,8 @@ const profile = computed(() => {
 })
 const logout = () => {
   store.commit('user/SET_USER', {})
+  // 清空购物车
+  store.commit('cart/setCartList', [])
   router.push('/login')
 }
 </script>

@@ -1,3 +1,4 @@
+import store from '@/store'
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 // 懒加载
 const Layout = () => import('@/views/Layout')
@@ -7,6 +8,7 @@ const SubCategory = () => import('@/views/category/sub.vue')
 const Goods = () => import('@/views/goods')
 const Login = () => import('@/views/login')
 const Callback = () => import('@/views/login/callback.vue')
+const Cart = () => import('@/views/cart')
 const routes = [
   {
     path: '/',
@@ -31,17 +33,20 @@ const routes = [
         // 商品详情页
         path: '/product/:id',
         component: Goods
+      },
+      {
+        path: '/cart',
+        component: Cart
       }
     ]
   },
-
   {
     // 登录页面
     path: '/login',
     component: Login
   },
   {
-    // 
+    // 联合登录页面
     path: '/login/callback',
     component: Callback
   }
@@ -58,4 +63,15 @@ const router = createRouter({
   }
 })
 
+// 前置导航守卫
+router.beforeEach((to, from, next) => {
+  const { token } = store.state.user.profile
+  // to:从哪来
+  // from：到哪去
+  if (to.path.startsWith('/member') && !token) {
+    // redirectUrl：回调地址
+    next({ path: '/login', query: { redirectUrl: to.fullPath } })
+  }
+  next()
+})
 export default router
