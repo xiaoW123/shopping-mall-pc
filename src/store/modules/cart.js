@@ -56,9 +56,9 @@ const mutations = {
 
 const actions = {
   // 因为要处理 已登录 和 未登录 的情况，有网络请求处理，所以推荐用promise，就知道请求什么时候执行完毕
-
   // 合并购物车（登录和未登录）
-  mergeLocalCart(context) {
+  // 因为合并购物车数据接口有问题就不合并了
+  async mergeLocalCart(context) {
     const cartList = context.getters.validList.map(({ skuId, selected, count }) => {
       return {
         skuId,
@@ -66,16 +66,18 @@ const actions = {
         count
       }
     })
-    mergeLocalCart(cartList)
-      .then(() => {
-        console.log(1)
-        // 合并成功后删除原数据
-        context.commit('setCartList', [])
-      })
-      .catch((e) => {
-        console.log(2)
-        console.log(e)
-      })
+    await mergeLocalCart(cartList)
+    // 合并成功后删除原数据
+    context.commit('setCartList', [])
+    // .then(() => {
+    //   console.log(1)
+    //   // 合并成功后删除原数据
+    //   context.commit('setCartList', [])
+    // })
+    // .catch((e) => {
+    //   console.log(2)
+    //   console.log(e)
+    // })
   },
   // 加入购物车
   insertCart(context, goods) {

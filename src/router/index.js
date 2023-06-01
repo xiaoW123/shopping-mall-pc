@@ -9,6 +9,8 @@ const Goods = () => import('@/views/goods')
 const Login = () => import('@/views/login')
 const Callback = () => import('@/views/login/callback.vue')
 const Cart = () => import('@/views/cart')
+const Checkout = () => import('@/views/member/pay/Checkout.vue')
+const Pay = () => import('@/views/member/pay')
 const routes = [
   {
     path: '/',
@@ -37,6 +39,16 @@ const routes = [
       {
         path: '/cart',
         component: Cart
+      },
+      {
+        // 下单结算
+        path: '/member/checkout',
+        component: Checkout
+      },
+      {
+        // 支付
+        path: '/member/par',
+        component: Pay
       }
     ]
   },
